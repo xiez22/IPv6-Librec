@@ -1,0 +1,125 @@
+{% extends 'web/base.html'%}
+{% block body %}
+
+<div class="container">
+    <div class="col-xs-6 col-xs-offset-3">
+        <form class="form-horizontal" role="search" method="get" action=''>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control input-lg " name="q" value="{{ request.GET.q }}"
+                        placeholder="查找您喜爱的图书 " />
+                    <span class='input-group-btn'>
+                        <button class='btn btn-info btn-lg' type='submit'>搜索
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-xs-offset-9  mt-3">
+        <a href="{% url 'recommend' %}" class="btn btn-primary btn-lg" style="margin-left: 20pt;"><strong>
+                我的空间
+            </strong></a>
+    </div>
+</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-3">
+            <h1>热门排行</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <script src="/static/web/js/Chart.min.js"></script>
+
+    <canvas id="myChart" width="400" height="100"></canvas>
+    <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ name_list| safe }},
+        datasets: [{
+            label: '热门数目Top10',
+            data: {{ cnt_list| safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+            // borderColor: [
+            //     'rgba(255, 99, 132, 1)',
+            //     'rgba(54, 162, 235, 1)',
+            //     'rgba(255, 206, 86, 1)',
+            //     'rgba(75, 192, 192, 1)',
+            //     'rgba(153, 102, 255, 1)',
+            //     'rgba(255, 159, 64, 1)'
+            // ],
+            borderWidth: 1
+        }]
+            },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+        });
+    </script>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-3">
+            <h1>热门推荐</h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <!-- Movie list -->
+    <div class="row">
+        {% if movies %}
+        {% for movie in movies %}
+        <div class="col-sm-2 col-md-2 ">
+            <div class="thumbnail">
+                <h4>{{movie.title}}</h4>
+                <a href="{% url 'detail' movie.id %}">
+                    <img src="media/shu-2.png" class="img-responsive">
+                </a>
+                <h5 style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{movie.genre}}</h5>
+                <div class="caption">
+                    <!-- View Details -->
+                    <a href="{% url 'detail' movie.id %}" class="btn btn-primary btn-sm" role="button">评分</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

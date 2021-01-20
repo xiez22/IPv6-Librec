@@ -1,0 +1,72 @@
+{% extends 'web/base.html'%}
+{% block title %}Recommendations{% endblock %}
+{% block body %}
+<!--history-->
+<div class="container-fluid">
+    <h2>历史借阅</h2>
+</div>
+
+<div class="container-fluid">
+
+    <!-- book list -->
+    <div class="row">
+        {% if book_list %}
+        {% for book in book_list %}
+        <div class="col-sm-2 col-md-2 ">
+            <div class="thumbnail">
+                <h4>{{book.title}}</h4>
+                <a href="{% url 'detail' book.id %}">
+                    <!-- img src="{{ book.movie_logo.url}}" class="img-responsive" -->
+                    <img src="/media/shu-2.png" class="img-responsive">
+                </a>
+                <h5>{{book.genre}}</h5>
+                <div class="caption">
+
+                    <!-- View Details -->
+                    <a href="{% url 'detail' book.id %}" class="btn btn-primary btn-sm" role="button">评分</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h4 style="margin-left: 25pt;">空空如也</h4>
+        {% endif %}
+    </div>
+
+</div>
+
+<!--recommend-->
+<div class="container-fluid">
+    <h2>为你推荐</h2>
+</div>
+
+
+<div class="container-fluid">
+    <!-- Movie list -->
+    <div class="row">
+        {% if rec_list %}
+        {% for rec in rec_list %}
+        <div class="col-sm-2 col-md-2 ">
+            <div class="thumbnail">
+                <h4>{{rec.title}}</h4>
+                <a href="{% url 'detail' rec.id %}">
+                    <!-- img src="{{ rec.movie_logo.url}}" class="img-responsive" -->
+                    <img src="/media/shu-2.png" class="img-responsive">
+                </a>
+                <h5>{{rec.genre}}</h5>
+                <div class="caption">
+
+                    <!-- View Details -->
+                    <a href="{% url 'detail' rec.id %}" class="btn btn-primary btn-sm" role="button">评分</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h4 style="margin-left: 25pt;">没有找到推荐的内容，可能数据库暂时未收录您的个人借阅信息，或者您的借阅历史为空。</h4>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

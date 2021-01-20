@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:elevation="2dp"
+	android:layout_margin="10dp"
+	android:background="@drawable/list_corner_view">
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Title"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#000000"
+			android:textStyle="bold"
+			android:ellipsize="end"
+			android:id="@+id/newsentryTextView1"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginRight="10dp"
+			android:gravity="bottom"
+			android:textAlignment="gravity"/>
+
+	</LinearLayout>
+
+	<View
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginTop="10dp"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="classifiction"
+		android:layout_marginLeft="10dp"
+		android:layout_marginTop="10dp"
+		android:textSize="14sp"
+		android:textColor="#200957"
+		android:background="@drawable/purple_corner_view"
+		android:id="@+id/newsentryTextView2"
+		android:elevation="3dp"
+		android:layout_marginBottom="10dp"/>
+
+</LinearLayout>

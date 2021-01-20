@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="60dp"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:background="#D22B3F"
+		android:elevation="3dp">
+
+		<ImageButton
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="match_parent"
+			android:layout_width="wrap_content"
+			android:src="@drawable/icon_back"
+			android:layout_marginTop="0dp"
+			android:layout_marginBottom="0dp"
+			android:adjustViewBounds="true"
+			android:paddingBottom="13dp"
+			android:paddingTop="13dp"
+			android:maxHeight="20dp"
+			android:cropToPadding="true"
+			android:scaleType="fitCenter"
+			android:onClick="onClickSubNewsButtonBack"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:text="城市动态"
+			android:gravity="center_vertical"
+			android:layout_gravity="center_vertical"
+			android:textStyle="bold"
+			android:textColor="#FFFFFF"
+			android:textSize="18sp"/>
+
+	</LinearLayout>
+
+	<ListView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/subnewsListView1"
+		android:dividerHeight="20dp"
+		android:divider="#D8D8D8"/>
+
+</LinearLayout>
+

@@ -1,0 +1,79 @@
+{% extends 'web/base.html'%}
+{% block title %}{{movies.title}}{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid col-sm-offset-1">
+
+    <div class="row">
+
+        <!-- Left Movie Info -->
+        <div class="col-sm-2 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="#">
+                        <!-- img src="{{ movies.movie_logo.url}}" class="img-responsive"-->
+                        <img src="/media/shu-2.png" class="img-responsive">
+                    </a>
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+        <!-- Right Movie Info -->
+        <div class="col-sm-offset-1 col-sm-4 col-md-4">
+            <h1>{{movies.title}}</h1>
+            {% if has_detail %}
+            <h3><small>作者： {{ author }}</small></h3>
+            <h3><small>出版社： {{ publisher }}</small></h3>
+            <h3><small>分类号： {{ code }}</small></h3>
+            <h3><small>出版年： {{ year }}</small></h3>
+            <h3><small>借阅次数： {{ borrow_cnt }}</small></h3>
+            {% endif %}
+
+            {% if rate_cnt %}
+            <h3><small>评分： {{ rate }} （共{{ rate_cnt }}份评分）</small></h3>
+            {% else %}
+            <h3><small>无可用评分</small></h3>
+            {% endif %}
+            <h1><small>给这本书一个评分</small></h1>
+            <h3><small>请给出您的评分： </small></h3>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="col-sm-offset-0 col-sm-8">
+                <form class="form-horizontal" role="search" method="post" action="{% url 'detail' movies.id %}"
+                    onsubmit="return validateForm()" name="ratingForm">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="star-rating">
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="rating" class="rating-value" value="0">
+                                        {% csrf_token %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="提交">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

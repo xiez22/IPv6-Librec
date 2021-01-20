@@ -1,0 +1,69 @@
+.navbar{
+	border-radius: 0;
+	min-height: 80px;
+    background-color: rgb(87, 17, 38);
+}
+.container-fluid{
+	margin-top: 18px;
+}
+.navbar-nav>li>a{
+	font-size: 18px;
+}
+.navbar-brand{
+	font-size: 22px;
+	font-family: inherit;
+	font-style: bold;
+	font-weight: 700;
+}
+.navbar-inverse .navbar-brand{
+	color:#ffffff;
+}
+.navbar-inverse .navbar-nav>li>a{
+		color: #ffffff;	
+}
+h2{
+	margin-left: 20px;
+}
+.navbar-inverse .navbar-brand:hover{
+    color: #b4859c;
+}
+.navbar-inverse .navbar-nav>li>a:hover{
+    color: #b4859c;
+}
+
+#social-fb:hover {
+     color: #8f5765;
+ }
+ #social-tw:hover {
+     color: #b4859c;
+ }
+
+ #social-em:hover {
+     color: #f39c12;
+ }
+ #social-git:hover{
+ 	color:rgb(255, 255, 255);
+ }
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: 100%;
+    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 155px; /* .push must be the same height as .footer */
+}
+
+/*.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.thumbnail {
+  height: 100%;
+}*/
+
